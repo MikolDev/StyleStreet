@@ -1,0 +1,6 @@
+:host {
+    display: block;
+    height: calc(100vh - var(--mat-toolbar-standard-height)); // calculate the height to fill space between header and bottom of the browser
+    overflow: auto;
+    background-color: aqua;
+}
