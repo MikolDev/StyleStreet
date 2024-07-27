@@ -9,12 +9,12 @@ import { Product } from '../../shared/models/product';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl: string = 'https://api.escuelajs.co/api/v1/';
+  private baseUrl: string = 'http://127.0.0.1:8000/api/';
 
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    const url = this.baseUrl + 'products';
+    const url = this.baseUrl + 'products/';
     return this.http.get<Product[]>(url)
       .pipe(
         catchError(this.handleError<Product[]>('getProducts', []))
@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   getCategories(): Observable<Category[]> {
-    const url = this.baseUrl + 'categories';
+    const url = this.baseUrl + 'categories/';
     return this.http.get<Category[]>(url)
       .pipe(
         catchError(this.handleError<Category[]>('getCategories', []))

@@ -1,5 +1,7 @@
 import { ApiService } from '../../../../core/services/api-service.service';
 import { Component } from '@angular/core';
+import { Product } from '../../../../shared/models/product';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-product-list-view',
@@ -7,13 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './product-list-view.component.scss'
 })
 export class ProductListViewComponent {
+  products: Product[] = [];
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getProducts().subscribe((products) => {
-      console.log(products)
-    })
+    this.apiService.getProducts().pipe(
+      tap((products) => {
+        this.products = products;
+      })
+    ).subscribe();
   }
-
 }

@@ -8,6 +8,6 @@ import { Category } from '../../../../shared/models/category';
   styleUrl: './category-tile.component.scss'
 })
 export class CategoryTileComponent {
-  @Input() category?: Category;
+  @Input() category!: Category;
 
 }

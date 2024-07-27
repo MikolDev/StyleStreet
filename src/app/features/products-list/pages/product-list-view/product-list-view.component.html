@@ -1,1 +1,8 @@
-<p>product-list-view works!</p>
+<div class="d-flex justify-content-center">
+    <h2>Products</h2>
+</div>
+<div class="row m-0 justify-content-center">
+    @for(product of products; track product) {
+        <div app-product-tile [product]="product" class="tile col-auto d-flex flex-column align-items-center m-4 px-4 pt-3 pb-4"></div>
+    }
+</div>

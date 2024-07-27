@@ -5,8 +5,6 @@ export interface Product {
     title: string,
     price: number,
     description: string,
-    images: string[],
-    creationAt: Date,
-    updatedAt: Date,
+    image: string,
     category: Category
 };
