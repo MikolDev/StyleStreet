@@ -1,4 +1,4 @@
-import { CategoriesDataService } from '../../services/categories-data.service';
+import { CategoriesDataService } from '../../../../shared/services/categories/categories-data.service';
 import { Category } from '../../../../shared/models/category';
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';

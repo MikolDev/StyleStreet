@@ -1,13 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FeaturesRoutingModule } from './features-routing.module';
-import { ProductListViewComponent } from './product-list/pages/product-list-view/product-list-view.component';
-
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
-    ProductListViewComponent
   ],
   imports: [
     CommonModule,
