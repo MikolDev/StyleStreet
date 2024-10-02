@@ -4,3 +4,8 @@
     overflow: auto;
     background-color: aqua;
 }
+
+img {
+    height: 100%;
+    object-fit: cover;
+}

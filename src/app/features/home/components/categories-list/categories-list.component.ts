@@ -1,7 +1,6 @@
-import { ApiService } from '../../../../core/services/api-service.service';
+import { CategoriesDataService } from '../../services/categories-data.service';
 import { Category } from '../../../../shared/models/category';
 import { Component } from '@angular/core';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-categories-list',
@@ -11,18 +10,10 @@ import { tap } from 'rxjs';
 export class CategoriesListComponent {
   categories: Category[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private categoriesDataService: CategoriesDataService) { }
 
   ngOnInit(): void {
-    this.loadCategories();
-  }
-
-  loadCategories(): void {
-    this.apiService.getCategories().pipe(
-      tap((categories) => {
-        this.categories = categories;
-      })
-    ).subscribe();
+    this.categories = this.categoriesDataService.categories();
   }
 
 }

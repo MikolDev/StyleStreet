@@ -1,4 +1,4 @@
-import { ApiService } from '../../../../core/services/api-service.service';
+import { ApiService } from '../../../../core/services/api.service';
 import { Component } from '@angular/core';
 import { Product } from '../../../../shared/models/product';
 import { tap } from 'rxjs';
