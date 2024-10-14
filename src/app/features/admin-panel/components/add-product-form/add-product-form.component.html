@@ -1,5 +1,5 @@
 <h3>Add product</h3>
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productFormDirective)" #productFormDirective="ngForm">
     <div class="d-flex flex-column">
         <mat-form-field>
             <mat-label>Title</mat-label>
@@ -12,8 +12,8 @@
         <mat-form-field>
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
-                @for (name of categoriesNames; track name) {
-                    <mat-option [value]="name">{{ name }}</mat-option>
+                @for (category of categories; track category.id) {
+                    <mat-option [value]="category.id">{{ category.name }}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
@@ -25,6 +25,6 @@
             <mat-label>Description</mat-label>
             <input matInput formControlName="description">
         </mat-form-field>
-        <button type="submit" mat-flat-button>Submit</button>
+        <button type="submit" mat-flat-button [disabled]="productForm.invalid">Submit</button>
     </div>    
 </form>

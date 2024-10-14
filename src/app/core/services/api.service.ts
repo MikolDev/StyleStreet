@@ -29,6 +29,15 @@ export class ApiService {
       );
   }
 
+  createProduct(product: Product): Observable<Product> {
+    const url = this.baseUrl + 'products/';
+    console.log('api')
+    return this.http.post<Product>(url, product)
+      .pipe(
+        catchError(this.handleError<Product>('createProduct'))
+      )
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

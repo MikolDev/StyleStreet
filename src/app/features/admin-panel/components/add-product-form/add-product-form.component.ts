@@ -1,7 +1,10 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, WritableSignal } from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 import { CategoriesDataService } from '../../../../shared/services/categories/categories-data.service';
-import { Component } from '@angular/core';
+import { Category } from '../../../../shared/models/category';
+import { Product } from '../../../../shared/models/product';
+import { ProductsDataService } from '../../../../shared/services/products/products-data.service';
 
 @Component({
   selector: 'app-add-product-form',
@@ -9,23 +12,40 @@ import { Component } from '@angular/core';
   styleUrl: './add-product-form.component.scss'
 })
 export class AddProductFormComponent {
-  categoriesNames: string[] = [];
+  categories: Category[] = [];
   productForm = new FormGroup({
-    title: new FormControl(''),
-    price: new FormControl(''),
-    category: new FormControl(''),
-    image: new FormControl(''),
-    description: new FormControl('')
+    title: new FormControl('', [ Validators.required ]),
+    price: new FormControl(0, [ Validators.required ]),
+    category: new FormControl(0, [ Validators.required ]),
+    image: new FormControl('', [ Validators.required ]),
+    description: new FormControl('', [ Validators.required ])
   });
 
-  constructor(private categoriesDataService: CategoriesDataService) {}
+  constructor(
+    private categoriesDataService: CategoriesDataService,
+    private productsDataService: ProductsDataService
+  ) {}
 
   ngOnInit(): void {
-    this.categoriesNames = this.categoriesDataService.getCategoriesNames();
+    this.categories = this.categoriesDataService.categories();
   }
 
-  onSubmit() {
-    console.log(this.productForm.value);
-    this.productForm.reset()
+  onSubmit(productFormDirective: FormGroupDirective) {
+    if (this.productForm.valid) {
+      const formValue = this.productForm.value;
+      if (!formValue.price) {
+        formValue.price = 0;
+      }
+      const product = formValue as Product;
+      this.productsDataService.createProduct(product).subscribe({
+        next: (product) => {
+          console.log(product);
+          this.productForm.reset();
+          productFormDirective.resetForm();
+        },
+        error: (err) => console.log(err)
+      });
+      
+    }
   }
 }

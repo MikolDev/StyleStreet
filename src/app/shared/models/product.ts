@@ -1,10 +1,10 @@
 import { Category } from "./category";
 
 export interface Product {
-    id: number,
+    id?: number,
     title: string,
     price: number,
     description: string,
     image: string,
-    category: Category
+    category: Category | number
 };
