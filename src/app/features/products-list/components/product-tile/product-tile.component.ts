@@ -8,7 +8,7 @@ import { Product } from '../../../../shared/models/product';
   styleUrl: './product-tile.component.scss'
 })
 export class ProductTileComponent {
-  @Input() product?: Product;
+  @Input() product!: Product;
 
   constructor() {}
 
