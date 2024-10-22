@@ -2,5 +2,8 @@
     <h2>Admin panel</h2>
 </div>
 <div class="container">
-    <app-add-product-form></app-add-product-form>
+    <div class="d-flex justify-content-end px-2 py-4">
+        <button mat-raised-button (click)="openAddProductDialog()">Add product</button>
+    </div>
+    <app-products-admin-list></app-products-admin-list>
 </div>

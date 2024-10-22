@@ -41,6 +41,7 @@ export class AddProductFormComponent {
           console.log(product);
           this.productForm.reset();
           productFormDirective.resetForm();
+          this.productsDataService.fetchProducts();
         },
         error: (err) => console.log(err)
       });
