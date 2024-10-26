@@ -10,16 +10,14 @@ import { Product } from '../../models/product';
 export class ProductsDataService {
   products: WritableSignal<Product[]> = signal([]);
 
-  constructor(private apiService: ApiService) {
-    this.fetchProducts();
-  }
+  constructor(private apiService: ApiService) {}
 
   createProduct(product: Product): Observable<Product> {
     return this.apiService.createProduct(product);
   }
 
-  fetchProducts() {
-    this.apiService.getProducts().subscribe((products) => {
+  fetchProducts(categoryId?: number) {
+    this.apiService.getProducts(categoryId).subscribe((products) => {
       this.products.set(products);
     });
   }

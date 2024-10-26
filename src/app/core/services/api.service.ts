@@ -13,8 +13,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    const url = this.baseUrl + 'products/';
+  getProducts(categoryId?: number): Observable<Product[]> {
+    let url = this.baseUrl + 'products';
+    if (categoryId !== undefined) {
+      url += '/?category=' + categoryId;
+    }
     return this.http.get<Product[]>(url)
       .pipe(
         catchError(this.handleError<Product[]>('getProducts', []))
@@ -31,7 +34,6 @@ export class ApiService {
 
   createProduct(product: Product): Observable<Product> {
     const url = this.baseUrl + 'products/';
-    console.log('api')
     return this.http.post<Product>(url, product)
       .pipe(
         catchError(this.handleError<Product>('createProduct'))

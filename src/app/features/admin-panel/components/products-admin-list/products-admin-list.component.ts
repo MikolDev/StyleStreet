@@ -31,6 +31,7 @@ export class ProductsAdminListComponent {
   displayedColumns: string[] = [];
 
   constructor(private productsDataService: ProductsDataService) {
+    this.productsDataService.fetchProducts();
     effect(() => {
       this.products = this.productsDataService.products();
     });

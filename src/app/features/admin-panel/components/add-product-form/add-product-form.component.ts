@@ -37,8 +37,7 @@ export class AddProductFormComponent {
       const formValue = this.productForm.value;
       const product = formValue as Product;
       this.productsDataService.createProduct(product).subscribe({
-        next: (product) => {
-          console.log(product);
+        next: () => {
           this.productForm.reset();
           productFormDirective.resetForm();
           this.productsDataService.fetchProducts();

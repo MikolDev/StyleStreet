@@ -1,7 +1,7 @@
-import { ApiService } from '../../../../core/services/api.service';
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
+
 import { Product } from '../../../../shared/models/product';
-import { tap } from 'rxjs';
+import { ProductsListService } from '../../services/products-list.service';
 
 @Component({
   selector: 'app-product-list-view',
@@ -11,13 +11,10 @@ import { tap } from 'rxjs';
 export class ProductListViewComponent {
   products: Product[] = [];
 
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit(): void {
-    this.apiService.getProducts().pipe(
-      tap((products) => {
-        this.products = products;
-      })
-    ).subscribe();
+  constructor(private productsListService: ProductsListService) {
+    effect(() => {
+      this.products = this.productsListService.products();
+    });
   }
+
 }

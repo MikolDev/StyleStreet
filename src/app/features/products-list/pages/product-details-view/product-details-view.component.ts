@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-details-view.component.scss'
 })
 export class ProductDetailsViewComponent {
-
+ // MODAL
 }
