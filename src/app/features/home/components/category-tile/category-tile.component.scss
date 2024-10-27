@@ -1,7 +1,11 @@
 :host {
-    border: 1px solid #9c9c9c;
-    border-radius: 8px;
-    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.2); 
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.5); 
+}
+
+:host:hover {
+    box-shadow: 6px 10px 18px rgba(0, 0, 0, 0.6);
+    transition: 0.4s;
+    cursor: pointer
 }
 
 img {

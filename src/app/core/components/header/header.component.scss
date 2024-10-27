@@ -1,6 +1,33 @@
+@import '../../../../styles/colors';
+
 .sticky-header {
+    background-color: $dark-grey;
+    color: $dirty-white;
     position: -webkit-sticky; /* For Safari */
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays on top */
+}
+
+.mat-mdc-button:not(:disabled) {
+    color: $dirty-white;
+}
+
+a {
+    font-size: 1em;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Border thickness */
+    background-color: $dirty-white; /* Border color */
+    transition: width 0.3s ease-in-out;
+}
+
+a:hover::after {
+    width: 100%;
 }

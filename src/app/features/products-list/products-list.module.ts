@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ProductDetailsViewComponent } from './pages/product-details-view/product-details-view.component';
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProductsListRoutingModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class ProductsListModule { }

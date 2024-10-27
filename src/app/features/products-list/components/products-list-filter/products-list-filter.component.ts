@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 import { ProductsListService } from '../../services/products-list.service';
 
 @Component({
-  selector: 'app-products-list-filter',
+  selector: 'div[app-products-list-filter]',
   templateUrl: './products-list-filter.component.html',
   styleUrl: './products-list-filter.component.scss'
 })
@@ -26,7 +26,12 @@ export class ProductsListFilterComponent {
   categoryChanged() {
     const category = this.filtersForm.get('category')?.value;
     if (category != null) {
-      this.productsListService.fetchProducts(category);
+      if (category == -1) {
+        // all
+        this.productsListService.fetchProducts()
+      } else {
+        this.productsListService.fetchProducts(category);
+      }
     }
   }
 }
