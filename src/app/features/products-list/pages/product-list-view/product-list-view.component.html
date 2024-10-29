@@ -14,7 +14,7 @@
     </mat-paginator>
     <div class="flex-box d-flex flex-wrap justify-content-start pb-4">
         @for(product of (products | slice: lowValue : highValue); track product) {
-            <div app-product-tile [product]="product" class="tile col-auto d-flex flex-column align-items-center px-4 pt-3 pb-4"></div>
+            <div app-product-tile [product]="product" (click)="showProduct(product)" class="tile col-auto d-flex flex-column align-items-center px-4 pt-3 pb-4"></div>
         }
         @empty {
             <span>No products!</span>

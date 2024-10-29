@@ -1,14 +1,16 @@
-<h3>Filters</h3>
-<form [formGroup]="filtersForm">
-    <div class="d-flex">
-        <mat-form-field>
-            <mat-label>Category</mat-label>
-                <mat-select (selectionChange)="categoryChanged()" formControlName="category">
-                    <mat-option value="-1">All</mat-option>
-                    @for (category of categories; track category.id) {
-                        <mat-option [value]="category.id">{{ category.name }}</mat-option>
-                    }
-                </mat-select>
-        </mat-form-field>
-    </div>
-</form>
+<div class="container">
+    <h3>Filters</h3>
+    <form [formGroup]="filtersForm">
+        <div class="d-flex">
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                    <mat-select (selectionChange)="categoryChanged()" formControlName="category">
+                        <mat-option value="-1">All</mat-option>
+                        @for (category of categories; track category.id) {
+                            <mat-option [value]="category.id">{{ category.name }}</mat-option>
+                        }
+                    </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

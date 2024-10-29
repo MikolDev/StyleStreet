@@ -1,4 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
@@ -21,7 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsListRoutingModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    MatIcon,
+    MatButtonModule
   ]
 })
 export class ProductsListModule { }

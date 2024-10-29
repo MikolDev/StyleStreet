@@ -15,5 +15,9 @@ export class AdminViewComponent {
     const dialogRef = this.dialog.open(AddProductFormComponent, {
       width: '600px'
     })
+
+    dialogRef.afterClosed().subscribe(result => {
+      // TOAST
+    });
   }
 }
